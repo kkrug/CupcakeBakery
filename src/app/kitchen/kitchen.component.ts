@@ -62,7 +62,6 @@ export class KitchenComponent implements OnInit {
 
     private handleError(error: any): Observable<any> {
       console.error('An error occurred:', error);
-      // Return a default value or handle the error as needed
       return of(null);
     }
 
@@ -162,7 +161,7 @@ export class KitchenComponent implements OnInit {
                 console.log(`All ingredients are well combined.`);
                 // Step 4: Fill the cupcake liners about 3/4 full.
                 console.log(`Filling the cupcake liners about 3/4 full with the batter.`);
-                return of(null); // Complete this step
+                return of(null);
               }
             }),
             catchError((error) => {
@@ -175,11 +174,10 @@ export class KitchenComponent implements OnInit {
                   concatMap(() => {
                     console.log('Batter has settled.');
                     console.log(`Filling the cupcake liners about 3/4 full with the batter.`);
-                    return of(null); // Continue with the next step
+                    return of(null);
                   })
                 );
               } else {
-                // Handle other types of errors
                 return throwError(error);
               }
             })
@@ -196,9 +194,7 @@ export class KitchenComponent implements OnInit {
           concatMap(() => this.combineWetIngredients()),
           concatMap(() => this.addEggsAndMix()),
           concatMap(() => this.prepareBatterAndPour()),
-          //concatMap(() => this.ovenService.bakeInOven(this.oven, 15)),
           finalize(() => {
-            // All steps are completed, including baking
             console.log('Baking cupcakes...')
             console.log('Cupcakes are ready!')
             console.log('Set cupcakes aside to cool.');
