@@ -1,4 +1,4 @@
-import { of, Observable, forkJoin, catchError, concatMap, timer, tap, map, mergeMap, switchMap, take, finalize } from "rxjs";
+import { of, Observable, forkJoin, catchError, concatMap, timer, tap, map, mergeMap, switchMap, take, finalize, throwError } from "rxjs";
 import { Component, OnInit } from '@angular/core';
 import { CupcakeFactory } from '../cupcake-factory.service';
 import { OvenService } from "../oven.service";
@@ -62,6 +62,7 @@ export class KitchenComponent implements OnInit {
 
     private handleError(error: any): Observable<any> {
       console.error('An error occurred:', error);
+      // Return a default value or handle the error as needed
       return of(null);
     }
 
@@ -152,10 +153,35 @@ export class KitchenComponent implements OnInit {
               return timer(2000);
             }),
             concatMap(() => {
-              console.log(`All ingredients are well combined.`);
-              // Step 4: Fill the cupcake liners about 3/4 full.
-              console.log(`Filling the cupcake liners about 3/4 full with the batter.`);
-              return of(); // Complete this step
+              // Check if the batter is overmixed (random)
+              if (Math.random() > 0.5) {
+                // Throw an exception for overmixed batter
+                return throwError(new OverMixedBatterException('Batter is overmixed.'));
+              } else {
+                // Continue with the next step
+                console.log(`All ingredients are well combined.`);
+                // Step 4: Fill the cupcake liners about 3/4 full.
+                console.log(`Filling the cupcake liners about 3/4 full with the batter.`);
+                return of(null); // Complete this step
+              }
+            }),
+            catchError((error) => {
+              if (error instanceof OverMixedBatterException) {
+                // Handle the overmixed batter exception
+                console.error('Overmixed batter detected.');
+                console.log('Waiting for batter to settle...');
+                // Simulate settling by waiting for a few seconds
+                return timer(3000).pipe(
+                  concatMap(() => {
+                    console.log('Batter has settled.');
+                    console.log(`Filling the cupcake liners about 3/4 full with the batter.`);
+                    return of(null); // Continue with the next step
+                  })
+                );
+              } else {
+                // Handle other types of errors
+                return throwError(error);
+              }
             })
           );
         }),
@@ -170,7 +196,9 @@ export class KitchenComponent implements OnInit {
           concatMap(() => this.combineWetIngredients()),
           concatMap(() => this.addEggsAndMix()),
           concatMap(() => this.prepareBatterAndPour()),
+          //concatMap(() => this.ovenService.bakeInOven(this.oven, 15)),
           finalize(() => {
+            // All steps are completed, including baking
             console.log('Baking cupcakes...')
             console.log('Cupcakes are ready!')
             console.log('Set cupcakes aside to cool.');
@@ -178,4 +206,10 @@ export class KitchenComponent implements OnInit {
         )
         .subscribe();
     }
+}
+class OverMixedBatterException extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'OverMixedBatterException';
+  }
 }
