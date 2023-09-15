@@ -1,6 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
-import { KitchenComponent } from './app/kitchen/kitchen.component';
+import { AppModule } from './src/app/app.module';
+import { KitchenComponent } from './src/app/kitchen/kitchen.component';
+import 'zone.js/dist/zone';
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .then((moduleRef) => {
