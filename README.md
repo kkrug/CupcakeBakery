@@ -1,8 +1,8 @@
 # Project Notes
 
-Here is a version of a cupcake baking simulator.
+Here is a version of a cupcake baking simulator. There is console output to describe each step that it is progressing through.
 
-There is console output to describe each step that it is progressing through.
+At the time of writing this, I am having some issues hosting on StackBlitz. It seems there are some bugs created with the latest Angular updates that have not been fixed on StackBlitz's end yet. I will update this if that changes or I find a workaround. This code should transpile and run locally.
 
 Note that this only encompasses the baking of the cupcakes, and excludes the making of the frosting - making the frosting would require similar logic and concepts
 already demonstrated.
