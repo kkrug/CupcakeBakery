@@ -2,7 +2,7 @@
 
 Here is a version of a cupcake baking simulator. There is console output to describe each step that it is progressing through.
 
-At the time of writing this, I am having some issues hosting on StackBlitz. The applicaiton link, found here: [https://github-karklc.stackblitz.io](https://github-karklc.stackblitz.io) seems to have some issues. I have had more luck with the Editor link, found here: [https://github-karklc.stackblitz.io](https://stackblitz.com/edit/github-karklc?file=src%2Fmain.ts).
+At the time of writing this, I am having some issues hosting on StackBlitz. The [Application Link](https://github-karklc.stackblitz.io) seems to have some issues. I have had more luck with the [Editor Link](https://stackblitz.com/edit/github-karklc?file=src%2Fmain.ts).
 The app also runs without issue locally.
 
 Note that this only encompasses the baking of the cupcakes, and excludes the making of the frosting - making the frosting would require similar logic and concepts
