@@ -14,7 +14,7 @@ import { KitchenComponent } from './kitchen/kitchen.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [KitchenComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

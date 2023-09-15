@@ -71,7 +71,6 @@ export class CupcakeFactory {
     quantityCupcake: '1 1/2 teaspoons',
     quantityFrosting: '1 1/2 teaspoons'
   };
-  
 
   constructor() {}
 

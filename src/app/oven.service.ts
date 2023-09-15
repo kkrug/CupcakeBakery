@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, timer } from 'rxjs';
-import { tap, switchMap } from 'rxjs/operators';
+import { tap, switchMap, delay, concatMap, last } from 'rxjs/operators';
 import { Oven } from './oven.model';
 
 @Injectable({
@@ -15,22 +15,6 @@ export class OvenService {
       tap(() => {
         console.log(`${oven.name} is preheated to ${temperature}°F`);
       })
-    );
-  }
-
-  bakeInOven(oven: Oven, time: number): Observable<any> {
-    // Simulate baking cupcakes in the oven
-    return timer(2000).pipe(
-      tap(() => {
-        console.log(`Baking cupcakes in ${oven.name} for ${time} minutes`);
-      }),
-      switchMap(() =>
-        timer(2000).pipe(
-          tap(() => {
-            console.log(`Cupcakes are ready!`);
-          })
-        )
-      )
     );
   }
 }

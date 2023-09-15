@@ -1,3 +1,18 @@
+# Project Notes
+
+Here is a version of a cupcake baking simulator.
+
+There is console output to describe each step that it is progressing through.
+
+Note that this only encompasses the baking of the cupcakes, and excludes the making of the frosting - making the frosting would require similar logic and concepts
+already demonstrated.
+
+Some interfaces were created an not used, such as a variety of cookware (pans, liners, etc.)
+
+Other opportunities for expansion in this project would be additional oven capabilities, additional appliance capabilities,
+making the frosting, and of course, an interactive front end.
+
+-----------------------------------------------------------------------------------------------------------------------
 # CupcakeBakery
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2.
